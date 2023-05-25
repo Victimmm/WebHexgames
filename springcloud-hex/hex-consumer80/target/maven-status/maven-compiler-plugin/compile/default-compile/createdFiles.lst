@@ -1,0 +1,6 @@
+com\lwm\springcloud\controller\UserController.class
+com\lwm\springcloud\controller\PageController.class
+com\lwm\springcloud\controller\SqlController.class
+com\lwm\springcloud\Consumer80_app.class
+com\lwm\springcloud\controller\HexController.class
+com\lwm\springcloud\cfgbeans\config.class

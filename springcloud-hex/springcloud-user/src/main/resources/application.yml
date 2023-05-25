@@ -1,0 +1,31 @@
+server:
+  port: 6001
+
+eureka:
+  client:
+    register-with-eureka: true
+    serviceUrl: 
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: springcloud-user
+    prefer-ip-address: true
+ 
+mybatis:
+  type-aliases-package: com.lwm.springcloud.entities
+  mapper-locations: 
+  - classpath:mybatis/mapper/**/*.xml
+
+spring:
+  application:
+    name: springcloud-user
+  datasource:
+    url: jdbc:mysql://localhost:3306/hikers?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root 
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mvc: 
+   static-path-pattern: /static/**
+  thymeleaf:  
+    cache: false 
+    mode: LEGACYHTML5     #设置该模板不严格检查html语法
+    

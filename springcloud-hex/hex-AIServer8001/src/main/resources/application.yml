@@ -1,0 +1,30 @@
+#配置服务器信息
+server:
+  port: 8001
+  
+spring:
+  application:
+    name: AiServer
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hikers?serverTimezone=UTC
+    username: root
+    password: 123456
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+   
+eureka:
+  client:
+    service-url: 
+      defaultZone: http://localhost:7001/eureka
+  instance: 
+    instance-id: login8001
+    prefer-ip-address: true
+    
+
+      
+      

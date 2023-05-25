@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+<meta charset="utf-8">
+<title>Hex-Games 登录与注册</title>
+
+<!-- Favicon -->
+<link rel="icon" href="../static/images/core-img/hex.png">
+<link rel="stylesheet" href="../static/css2/style.css">
+<style>
+	.radio{
+		width:auto;
+		display: inline-block;
+		margin-left:8px;
+	}
+</style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="form sign-in">
+            <h2>欢迎回来</h2>
+            <label>
+                <span>账号</span>
+                <input type="text" placeholder="请输入您的账号" id="accountnum" oninput="value=value.replace(/[^\d]/g,'')" maxlength="8"/>
+            </label>
+            <label>
+                <span>密码</span>
+                <input type="password" placeholder="请输入您的密码" id="password" maxlength="20"/>
+            </label>
+            <button type="button" class="submit" id="submit">登 录</button>
+        </div>
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+                    <h2>还未注册？</h2>
+                    <p>立即注册，开启游戏之旅！</p>
+                </div>
+                <div class="img__text m--in">
+                    <h2>已有帐号？</h2>
+                    <p>有帐号就登录吧，好久不见！</p>
+                </div>
+                <div class="img__btn">
+                    <span class="m--up">注 册</span>
+                    <span class="m--in">登 录</span>
+                </div>
+            </div>
+            <div class="form sign-up">
+                <h2>立即注册</h2>
+				<div style="margin-top: 35px;margin-left: 145px;">
+					<div style="width:265px;line-height:30px;">
+						<span>账&nbsp;&nbsp;&nbsp;&nbsp;号</span>
+						<input type="text"  style="width:200px;float:right;" id="accountnum2"/>
+					</div>
+					<div style="width:265px;line-height:30px;">
+						<span>昵&nbsp;&nbsp;&nbsp;&nbsp;称</span>
+						<input type="text" style="width:200px;float:right;"id="nickname"/>
+					</div>
+					<div style="width:265px;line-height:30px;">
+						<span>院&nbsp;&nbsp;&nbsp;&nbsp;校</span>
+						<input type="text"  style="width:200px;float:right;"id="school"/>
+					</div>
+					<div style="width:265px;line-height:30px;">
+						<span>密&nbsp;&nbsp;&nbsp;&nbsp;码</span>
+						<input type="password" style="width:200px;float:right;"id="password2"/>
+					</div>
+				</div>
+						<button type="button" class="submit" id="reg">注 册</button>
+			</div>
+               
+        </div>
+    </div>
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function (){
+			var accountnum_cookie = getMyCookie("accountnum");
+			$("#show_name").text(decodeURIComponent(accountnum_cookie));
+			
+			var password_cookie = getMyCookie("password");
+			$("#show_name").text(decodeURIComponent(password_cookie));
+		});
+	
+		function getMyCookie(key){
+			var val = "";
+	
+			// 对cookie操作
+			var cookies = document.cookie;
+			cookies = cookies.replace(/\s/,"");
+			var cookie_array = cookies.split(";");
+			for(i=0;i<cookie_array.length;i++){
+				// yh_mch=lilei
+				var cookie = cookie_array[i];
+				var array = cookie.split("=");
+				if(array[0]==key){
+					val = array[1];
+				}
+			}
+			return val;
+		}
+		
+		
+		$("#submit").click(function(){
+				if($("#accountnum").val()==""){
+					window.alert("请输入账号");
+					return;
+				}
+				if($("#password").val()==""){
+					window.alert("请输入密码");
+					return;
+				}
+		    		$.ajax({
+					url:"/consumer/logincheck",
+					type:"post",
+					data:{"accountnum":$("#accountnum").val(),"password":$("#password").val()},
+					success:function(result){
+						switch(result.trim()){
+		    	  				case "验证成功":
+		    	  				//带cookie跳转，后面只需要读取cookie就可以获取用户信
+		    	  						window.location.href="/index";
+		    	  						break;
+		    	  				case "密码错误":
+										window.alert("密码错误ヽ(●-`Д´-)ノ~");
+		    	  						break;
+		    	  				case "账号错误":
+										window.alert("暂无此账号，请前往注册ヽ(✿ﾟ▽ﾟ)ノ");
+										/* window.location.href="http://localhost:8080/index"; */
+		    	  						break;
+		    	  				default:
+										window.alert("系统错误!");
+										break;
+		    	  			}
+					},
+					error:function(message){
+						window.alert("error");
+					}
+					}); 
+			});
+			 
+		$("#reg").click(function(){
+			if($("#accountnum2").val()==""||$("#nickname").val()==""||$("#school").val()==""||$("#password2").val()=="")
+			{
+				window.alert("请完善注册信息ヽ(✿ﾟ▽ﾟ)ノ");
+				return;
+			}
+			$.ajax({
+			url:"/consumer/registercheck",
+			type:"post",
+			data:{"accountnum":$("#accountnum2").val(),"nickname":$("#nickname").val(),"school":$("#school").val(),"password":$("#password2").val()},
+			success:function(result){
+				switch(result.trim()){
+					case "注册成功":
+						window.alert("注册成功ヽ(✿ﾟ▽ﾟ)ノ");
+						window.location.href="/consumer/lar";
+						break;
+					case "账号重复":window.alert("账号已存在，请重新输入ヽ(✿ﾟ▽ﾟ)ノ");break;
+					default : window.alert("系统错误");break;
+				}
+			}
+			});
+		})
+	</script>
+    <script src="../static/js2/script.js"></script>
+	
+	<div style="text-align:center;">
+</div>
+</body>
+
+</html>

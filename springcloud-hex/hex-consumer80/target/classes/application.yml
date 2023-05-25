@@ -1,0 +1,35 @@
+server:
+  port: 8010
+
+eureka:
+  client:
+    register-with-eureka: false
+    serviceUrl: 
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: springcloudClient80
+    prefer-ip-address: true
+ 
+mybatis:
+  type-aliases-package: com.lwm.springcloud.entities
+  mapper-locations: 
+  - classpath:mybatis/mapper/**/*.xml
+
+spring:
+  application:
+    name: springcloud-Client
+  datasource:
+    url: jdbc:mysql://localhost:3306/hikers?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root 
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mvc: 
+   static-path-pattern: /static/**
+  servlet:
+    multipart:
+      max-file-size: 200MB #单个文件最大为200M
+      max-request-size: 200MB #单次请求文件总数大小为200M
+  thymeleaf:  
+    cache: false 
+    mode: LEGACYHTML5     #设置该模板不严格检查html语法
+    

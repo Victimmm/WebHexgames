@@ -1,0 +1,289 @@
+﻿<!DOCTYPE HTML >
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>Hex-Games 好友对战</title>
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<link rel="icon" href="../static/images/core-img/hex.png">
+<link rel="stylesheet" type="text/css" href="../static/css/button.css"></link>
+<link rel="stylesheet" href="../static/css/style.css">
+<link rel="stylesheet" href="../static/css/friends.css">
+<link rel="stylesheet" href="../static/css/soho.min.css">
+</head>
+<body style="overflow:hidden">    
+	 <script type="text/javascript">
+	     var user = $.cookie("accountnum");//[[${username}]];
+	     if(user==null){
+	     	alert("请先登陆哦ヽ(●-`Д´-)ノ~");
+	        window.location = "/login_register";
+	     }
+	</script>
+
+
+    <!-- <div align="center">
+	    <script type="text/javascript">document.write(user);</script>
+    </div> -->
+
+ <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+ </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area wow fadeInDown" data-wow-delay="500ms">
+        <!-- Navbar Area -->
+        <div class="egames-main-menu" id="sticker">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="egamesNav">
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="index">游戏简介</a></li>
+                                    <li><a href="teach">视频教学</a></li>
+                                    <li><a href="#">在线游戏 <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="font-size:xx-small"></span></a>
+                                        <ul class="dropdown">
+                                            <li><a href="hex">人机对战</a></li>
+                                            <li><a href="hex_p2p">好友对战</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="chat">交流论坛</a> </li>
+                                    <li><a href="GameRecord">个人战绩</a></li>
+                                    <li><a href="About">关于我们</a></li>
+                                </ul>
+                            </div>
+                        </div>
+						<div class="login-area">
+                             <a class="lr_button" href="login_register"><span>登录 / 注册</span></a>
+                        </div>
+                        <div class="user1">                               
+							<div class="user">	
+								<!-- <img src="../static/images/core-img/user.png" style="width:7%"> -->
+								<a href="userData" style="vertical-align:middle;font-family:cursive;font-size:18px;font-weight: bolder;display: inline;margin-right: 4%;color: rgb(255, 124, 7);">
+									<img src="../static/images/core-img/user.png" style="width:7%">
+									<span id="user_name"></span>
+								</a>
+								<a onclick="log_out()" href="#" style="vertical-align: inherit;font-family: 'Open Sans';font-weight: 600;font-size: 16px;padding: 0 10px;color: #545454;">
+									<span>退出登录</span>
+								</a>
+							</div>
+                        </div>
+                        
+                        
+                        <script type="text/javascript"> 
+	                        var user = $.cookie("accountnum");//[[${username}]];
+	     					if(user==null)
+	     						$('.user1').css("display","none");
+	     					else{
+	     						$('.login-area').css("display","none");
+	                        	var name = $.cookie("name");
+	                        	$('#user_name').text(name);
+	     					}
+	     					
+						</script>
+					
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+	
+	    <!-- ##### Hero Area Start ##### -->
+    <div class="hero-area" style="top: -13px;height:700px;">
+        <div class="herogames-post-slides  owl-carousel">
+		
+            <div class="single-slide bg-img bg-overlay" style="background-image: url(../static/images/bg-img/bck1.png);height:618px;">
+			
+			<!-- 好友列表 -->
+			<div class="friends" style="color:#939393;position: relative;width: 20%;top: 4%;left: 0%;height: 91.95%;font-size:15px;font-family: cursive;overflow: auto;">
+			    <ul class="NameList" id="userlist">        
+			        <li>
+			           <!--  <img src="../static/images/core-img/search.png"/> -->
+			            <input id="myfriends" class="search" placeholder="对战好友列表"></input>
+			            <!-- <img src="../static/images/core-img/add.png" style="float: right;margin-right: 25px;cursor:pointer;"/> -->
+			        </li>
+			        <script type="text/javascript"> 
+							var name = $.cookie('name');
+							$('#myfriends').text(name+" - 对战好友列表");
+					</script>
+					<script type="text/javascript">
+					var userlist;
+					$.ajax({
+					url:"/consumer/getAllUser",
+					type:"post",
+					datatype:"json",
+					success:function(listuser){
+						userlist=listuser;
+						var length=listuser.length;
+						for (var i=0;i<length;i++){
+							if(listuser[i].accountnum==user||listuser[i].accountnum=="11111111")
+								continue;
+							var txt=document.createElement("li");
+
+					    	var avatar=document.createElement("img");
+					    	
+					    	avatar.setAttribute("src", "../static/images/avatar/"+listuser[i].accountnum+".png");
+					    	avatar.setAttribute("onerror", "this.src='../static/images/avatar/default.png'");
+					        
+					        var friname=document.createElement("span");
+					        friname.className="name";
+					        friname.innerHTML=listuser[i].nickname;
+					        
+					        var battle=document.createElement("span")
+					        battle.className="invite";
+					        battle.innerHTML="邀请对战";
+					        battle.setAttribute("onclick", "choose("+listuser[i].accountnum+")")
+					        
+					        txt.appendChild(avatar);
+					        txt.appendChild(friname);
+					        txt.appendChild(battle);
+					        $("#userlist").append(txt);
+					        
+						}
+					},
+					error:function(message){
+						window.alert("error");
+					}
+					
+					}); 
+					</script>
+			    </ul>
+		   </div>
+			
+			<!-- 对战选项 -->
+			<div class="game-infos" style="color: #eeeeeedb !important;position: relative;width: 26%;top:-106.3%;left: 22.3%;height: 33%;font-size: 23px;border-radius: 15px 15px 15px 15px;background-color: #dddddd24;margin: 8% 0% 0% -3%;padding: 1% 0% 0% 1%;">
+				<p class="game-infos" id="val" style="font-size:23px;line-height:1.8;color: #eeeeeedb">我方：</p>
+				<p class="game-infos" id="vall" style="font-size:23px;line-height:1.5;color: #eeeeeedb">对方：</p>
+				<div class="btn-group" role="group" aria-label="..." style="width: 99%;height: 19%;">
+				  <span>选择队伍：</span>
+
+				  <input type="radio" id="contactChoice3"   name="Team" value="1">红
+				  
+			  	  <input type="radio" id="contactChoice3"   name="Team" value="2" style="margin: 2% 5%;">蓝
+				</div>
+				<div class="game_operation" style="height:22%;">
+					<a href="javascript:void(0)" onclick="find()" > 准备 </a>
+					<a href="javascript:void(0)" onclick="dill_userundo()"> 回退 </a>
+					<a href="javascript:void(0)" style="pointer-events:none" id="Chessrecord" onclick="exportrecord()"> 导出棋谱 </a>
+					<!-- <a href="javascript:void(0)"  style="visibility: hidden" id="Chessrecord" onclick="exportrecord()"> 导出棋谱 </a> -->
+					<!-- 下面这个只有在对战结束才显示，但是也要给它留个位置 -->
+					<!-- <button id="Chessrecord" style="visibility: hidden" onclick="exportrecord()"> 导出棋谱 </button> -->
+				</div>
+			</div>
+			
+			<!-- 聊天窗口 -->
+			<div class="chat">
+				<div class="title" id="usermsg">
+				<!-- 
+					<img src="../static/images/core-img/user4.png"/>
+					<span>廖威明</span> -->
+				</div>
+				<div class="msgs" id="message">
+				</div>
+				<div class="inputMsg">
+					<input placeholder="请输入消息内容" id="text"></input>
+					<img src="../static/images/core-img/send.png" onclick="send()"/>
+				</div>
+			</div>
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+						<div style="position:absolute;left:724px;top:65px;width:500px;height:500px;">
+							<script type="text/javascript" src="../static/js/board.js">//生成11*11的棋盘 和边界颜色</script>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    <!-- ##### Hero Area End ##### -->
+
+
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area" style="top: -95px;">
+        <!-- Main Footer Area -->
+        <div class="main-footer-area section-padding-100-0" style="padding-top: 0.2%;">
+            <div class="container">
+                <div class="row">
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3" style="margin: 0 auto;">
+                        <div class="single-footer-widget wow fadeInUp" data-wow-delay="100ms">
+                            <div class="widget-title">
+                                <a href="index"><img src="../static/images/core-img/hex.png" style="width:9%"></a>
+								<a href="index"><img src="../static/images/core-img/hex_text.png" style="width:41%"></a>
+								<a href="index"><img src="../static/images/core-img/hex_joy1.png" style="width:36%;"></a>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copywrite Area -->
+        <div class="copywrite-content">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12 col-sm-5" style="margin-left:33%;">
+                        <!-- Copywrite Text -->
+                        <p class="copywrite-text"><a href="#">
+							Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved   
+							<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备19057144号-1</a>
+						</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area End ##### -->
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <!-- <script src="../static/js/jquery/jquery-2.2.4.min.js"></script> -->
+    <!-- Popper js -->
+    <script src="../static/js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="../static/js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="../static/js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="../static/js/active.js"></script>
+	<!-- <div id="test"></div> -->
+	
+	<script type="text/javascript" src="../static/js/run.js"></script>
+	<script type="text/javascript" src="../static/js/checkwin.js"></script>
+    <!-- LogOut js -->
+    <script src="../static/js/logOut.js"></script>
+   	<script src="../static/js/websocket.js"></script>   
+   	<!-- Soho -->
+	<script src="../static/js/soho.min.js"></script>
+    
+</body>
+</html>

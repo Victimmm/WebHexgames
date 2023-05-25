@@ -1,0 +1,105 @@
+body{ 
+background: #f5faff;
+}
+.button{
+width: 50px;
+height: 29px;
+outline:none;
+}
+
+.button.red {
+    border:1px solid  #d6c6c6;
+background: #FF6666;
+}
+.button.blue {
+    border:1px solid  #d6c6c6;
+background: #6666ff;
+}
+.button.gray {
+    border:1px solid  #bfb9b9;
+background: #d0cccc;
+}
+
+   .button.larrowR{
+overflow:visible;
+}
+
+   .button.larrowB{
+overflow:visible;
+}
+   .button.larrowG{
+overflow:visible;
+}
+
+.larrowR:before{
+    position:absolute;
+    content: "";
+top: 0px;
+left: 0px;
+width: 50px;
+height: 28px;
+transform:rotate(60deg);
+background: #FF6666;
+}
+
+.larrowR:after{
+position:absolute;
+content: "";
+top: 0px;
+left: 0px;
+width: 50px;
+height: 28px;
+transform:rotate(-60deg);
+background: #FF6666;
+}
+
+.larrowG:before{
+    position:absolute;
+    content: "";
+top: 0px;
+left: 0px;
+width: 50px;
+height: 28px;
+transform:rotate(60deg);
+background: #d0cccc;
+}
+
+.larrowG:after{
+position:absolute;
+content: "";
+top: 0px;
+left: 0px;
+width: 50px;
+height: 28px;
+transform:rotate(-60deg);
+background: #d0cccc;
+}
+
+.larrowB:before{
+    position:absolute;
+    content: "";
+top: 0px;
+left: 0px;
+width: 50px;
+height: 28px;
+transform:rotate(60deg);
+background: #6666ff;
+}
+
+.larrowB:after{
+position:absolute;
+content: "";
+top: 0px;
+left: 0px;
+width: 50px;
+height: 28px;
+transform:rotate(-60deg);
+background: #6666ff;
+}
+
+hr{
+position:absolute;
+width:30px;
+border:0px;
+outline:none;
+}

@@ -1,0 +1,233 @@
+@CHARSET "UTF-8";
+/* CSS区分大小写 */
+ 
+/* 通用样式 */
+*{
+    margin:0;
+    padding:0;
+}
+ 
+ 
+ /* 好友列表 */
+.NameList{
+    display: flex;
+    flex-direction: column;
+    margin:6px 0 0 6px; /* 上右下左 */
+    background-color:rgb(255 255 255 / 0%);
+    
+}
+.NameList li{
+    list-style: none;
+    width: 277px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 15px 15px 15px 15px;
+    background-color: #dddddd24;
+    /* border: 1px solid #ededf5; */
+    margin-top: 1px;
+    padding: 5px 0;
+    box-shadow: inset 3px 0px 0px 0px #c78719;
+    }
+    
+.NameList span.NameIcon{
+    width:50px;
+    height:50px;
+    line-height:50px;
+    background: blue;
+    color:white;
+    font-size:35px;
+    text-align:center;  /* 文字居中 */
+    float:left;
+}
+.NameList span.girl
+{
+    background:#ff07fa;
+}
+.NameList img{
+    width: 50px !important;
+    height: 41px;
+    padding-left: 9px;
+    float: left;
+}
+.NameList p{
+    width:50px;
+    height:50px;
+    line-height:50px;
+    background: blue;
+    color:white;
+    font-size:35px;
+    text-align:center;
+    float:left;
+}
+.NameList span.name{
+    color: #eeeeeedb;
+    float: left;
+    width: 108px;
+    height: 100%;
+    margin-left: 4px;
+    font-size: 20px;
+    overflow: hidden;
+}
+.NameList span.invite{
+    float: left;
+    font-size: 17px;
+    color: #e8c18e;
+    font-weight: 600;
+    cursor: pointer;
+    padding-right: 16px;
+}
+.search{
+    background-color: #dddddd00;
+    width: 260px;
+    height: 43px;
+    border: none;
+    outline: none;
+    font-size: 22px;
+    padding-left: 6%;
+}
+
+
+/* 聊天窗口 */
+.chat{
+    color: #eeeeeedb !important;
+    position: relative;
+    width: 26%;
+    top: -117.3%;
+    left: 22.3%;
+    height: 55%;
+    font-size: 23px;
+    border-radius: 15px 15px 15px 15px;
+    background-color: #dddddd24;
+    margin: 5% 0% 0% -3%;
+    padding: 0% 0% 0% 0%;
+}
+
+.title{
+	height: 12%;
+    margin-bottom: 3px;
+    border-bottom: 1px solid #ffc107bf;
+}
+
+.title img{
+	width: 10% !important;
+    padding-left: 8px;
+    padding-top: 4px;
+    float: left;
+}
+
+.title span{
+    color: #eeeeeedb;
+    margin-left: 1px;
+    font-size: 20px;
+    font-family: cursive;
+}
+
+.msgs{
+    padding: 0 4% 0 4%;
+    height: 76%;
+    overflow-y: auto;	
+}
+
+.time{
+    font-family: cursive;
+    color: #eeeeeedb;
+    line-height: 24px;
+    font-size: 14px;
+    width: 100%;
+    margin: 1px 0 0 0;	
+}
+
+.friendMsg{
+    /* height: 25%; */
+    width: 100%;
+}
+
+.myMsg{
+	text-align:right;
+	
+}
+
+.stateMsg{
+	text-align:center;
+	font-size:15px;	
+	
+}
+
+.msg_state{
+	color:#ff4747;
+	line-height: 1.1;
+}
+
+.msg{
+	font-family: cursive;
+    color: #eeeeeedb;
+    line-height: 24px;
+    font-size: 14px;
+    margin: 0 0 0 0;
+}
+
+.inputMsg{
+	height: 11%;
+    border-radius: 15px 15px 15px 15px;
+    border-top: 1.5px solid #ffc107bf;
+}
+
+.inputMsg input{
+	background-color: #dddddd24;
+    border-radius: 15px 0px 0px 15px;
+    padding-left: 3%;
+    font-size: initial;
+    width: 90%;
+    height: 100%;
+    border: none;
+    outline: none;
+}
+
+.inputMsg img{
+	width: 10% !important;
+    padding-right: 8px;
+    padding-top: 4px;
+    float: right;
+    cursor:pointer;
+}
+
+
+::-webkit-input-placeholder { /* WebKit browsers */
+color: #eeeeeedb;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+color: #eeeeeedb;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+color: #eeeeeedb;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+color: #eeeeeedb;
+}
+
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+ 
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  border: 10px solid transparent;
+}
+ 
+::-webkit-scrollbar-track {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2) inset;
+}
+ 
+::-webkit-scrollbar-thumb {
+  min-height: 20px;
+  background-clip: content-box;
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.2) inset;
+}
+ 
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+

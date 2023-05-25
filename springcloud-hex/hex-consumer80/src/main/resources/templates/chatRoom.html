@@ -1,0 +1,594 @@
+﻿<!DOCTYPE HTML >
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Hex-Games 公共聊天室</title>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="../static/js/jquery/jquery-2.2.4.min.js"></script>
+	<!-- <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+	<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<link rel="icon" href="../static/images/core-img/hex.png">
+	<link rel="stylesheet" type="text/css" href="../static/css/button.css"></link>
+	<link rel="stylesheet" href="../static/css/style.css">
+	<link rel="stylesheet" href="../static/css/friends.css">
+	<!-- Soho css -->
+    <link rel="stylesheet" href="../static/css/soho.min.css">
+</head>
+<body style="overflow:hidden">    
+	 <script type="text/javascript">
+	     var user = $.cookie("accountnum");//[[${username}]];
+	     if(user==null){
+	     	alert("请先登陆哦ヽ(●-`Д´-)ノ~");
+	        window.location = "/login_register";
+	     }
+	</script>
+
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area wow fadeInDown" data-wow-delay="500ms">
+        <!-- Navbar Area -->
+        <div class="egames-main-menu" id="sticker">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="egamesNav">                     
+                       <!-- Menu -->
+                        <div class="classy-menu">
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="index">游戏简介</a></li>
+                                    <li><a href="teach">视频教学</a></li>
+                                    <li><a href="#">在线游戏 <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="font-size:xx-small"></span></a>
+                                        <ul class="dropdown">
+                                            <li><a href="hex">人机对战</a></li>
+                                            <li><a href="hex_p2p">好友对战</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="chat">交流论坛</a> </li>
+                                    <li><a href="GameRecord">个人战绩</a></li>
+                                    <li><a href="About">关于我们</a></li>
+                                </ul>
+                            </div>
+                        </div>
+						<div class="login-area">
+                             <a class="lr_button" href="login_register"><span>登录 / 注册</span></a>
+                        </div>
+                        <div class="user1">                               
+							<div class="user">	
+								<!-- <img src="../static/images/core-img/user.png" style="width:7%"> -->
+								<a href="userData" style="vertical-align:middle;font-family:cursive;font-size:18px;font-weight: bolder;display: inline;margin-right: 4%;color: rgb(255, 124, 7);">
+									<img src="../static/images/core-img/user.png" style="width:7%">
+									<span id="user_name"></span>
+								</a>
+								<a onclick="log_out()" href="#" style="vertical-align: inherit;font-family: 'Open Sans';font-weight: 600;font-size: 16px;padding: 0 10px;color: #545454;">
+									<span>退出登录</span>
+								</a>
+							</div>
+                        </div>                     
+                        <script type="text/javascript"> 
+	                        var user = $.cookie("accountnum");//[[${username}]];
+	     					if(user==null)
+	     						$('.user1').css("display","none");
+	     					else{
+	     						$('.login-area').css("display","none");
+	                        	var name = $.cookie("name");
+	                        	$('#user_name').text(name);
+	     					}
+						</script>	
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+	
+    <!-- ##### Content Area Start ##### -->
+    <div class="hero-area" style="top: -13px;height:700px;">
+        <div class="herogames-post-slides  owl-carousel">	
+            <div class="single-slide bg-img bg-overlay" style="background-image: url(../static/images/bg-img/bck1.png);height:618px;">
+			
+			<!-- layout -->
+			<div class="layout">
+			    <!-- content -->
+			    <div class="content">
+			        <!-- sidebar group -->
+			        <div class="sidebar-group">
+			
+			            <!-- friends sidebar -->
+			            <div id="chats" class="sidebar active">
+			            <header>
+							<span id="myfriends"></span>
+						</header>
+						<script type="text/javascript"> 
+							var name = $.cookie('name');
+							$('#myfriends').text(name+"的好友列表");
+						</script>
+			                <div class="sidebar-body">
+			                    <ul id="userList" class="list-group list-group-flush">
+			                       <!-- friends -->
+			                    </ul>
+			                </div>
+			            </div>
+			            <!-- ./ Chats sidebar -->
+			        </div>
+			        <!-- ./ sidebar group -->
+			
+			        <!-- chat -->
+			        <div class="chat"">
+			            <div class="chat-header">
+			                <div class="chat-header-user">
+			                    <div>
+			                        <h5 id="titleName"></h5>
+			                        <!-- <small class="text-muted">
+			                            <i>Online</i>
+			                        </small> -->
+			                    </div>
+			                </div>
+			            </div>
+			            <div class="chat-body" style="overflow:auto;"> <!-- .no-message -->
+			                <!--
+			                <div class="no-message-container">
+			                    <i class="fa fa-comments-o"></i>
+			                    <p>Select a chat to read messages</p>
+			                </div>
+			                -->
+			                <!-- 聊天框 -->
+			                
+			                <div id="messages" class="messages">
+			                <!-- outgoing message 为我方发送的数据，没有则是对方发送的数据 -->
+			                    
+			                </div>
+			            </div>
+			            <div class="chat-footer">
+			                <div style="display:flex;height: 100%;">
+			                    <input id="inputMessage" type="text" class="form-control" placeholder="请输入消息内容" >
+			                    <div class="form-buttons" style="width: 8%;">
+									<!--  --> 
+			                        <button class="btn btn-primary" onclick="send()" id="send_btn">
+		                           		发送
+			                        </button>
+			                    </div>
+			                </div>
+			            </div>
+			        </div>
+			        <!-- ./ chat -->
+			    </div>
+			    <!-- ./ content -->
+			
+			</div>
+			<!-- ./ layout -->
+			
+            </div>
+        </div>
+    </div>
+    <!-- ##### Content Area End ##### -->
+
+
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area" style="top: -95px;">
+        <!-- Main Footer Area -->
+        <div class="main-footer-area section-padding-100-0" style="padding-top: 0.2%;">
+            <div class="container">
+                <div class="row">
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3" style="margin: 0 auto;">
+                        <div class="single-footer-widget wow fadeInUp" data-wow-delay="100ms">
+                            <div class="widget-title">
+                                <a href="index"><img src="../static/images/core-img/hex.png" style="width:9%"></a>
+								<a href="index"><img src="../static/images/core-img/hex_text.png" style="width:41%"></a>
+								<a href="index"><img src="../static/images/core-img/hex_joy1.png" style="width:36%;"></a>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copywrite Area -->
+        <div class="copywrite-content">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12 col-sm-5" style="margin-left:33%;">
+                        <!-- Copywrite Text -->
+                        <p class="copywrite-text"><a href="#">
+							Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved   
+							<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备19057144号-1</a>
+						</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area End ##### -->
+    <!-- ##### All Javascript Script ##### -->
+
+    <!-- Popper js -->
+    <script src="../static/js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="../static/js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="../static/js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="../static/js/active.js"></script>
+	<!-- <div id="test"></div> -->
+	
+	<script type="text/javascript" src="../static/js/run.js"></script>
+	<script type="text/javascript" src="../static/js/checkwin.js"></script>
+    <!-- LogOut js -->
+    <script src="../static/js/logOut.js"></script> 
+    
+    <!-- Soho -->
+	<script src="../static/js/soho.min.js"></script>
+
+<script type="text/javascript">
+	
+	var ws;
+	var target;
+	var friendNum=0;
+	var userNum;
+	
+    
+    window.onload=function(){
+    	userNum=getCookie("accountnum");
+	    if(userNum==undefined){
+	    	alert("未获取到Cookie");
+	    	window.location.href="/index.html";
+	    }else{
+	    	getAllUser(userNum);
+			target = "ws://"+window.location.host+"/chatSocket/"+userNum;
+			if ('WebSocket' in window) {
+	       		//target表示请求目标
+	   			ws = new WebSocket(target);
+	       	} else if ('MozWebSocket' in window) {
+	         	ws = new MozWebSocket(target);
+	     	} else {
+	       		console.log('WebSocket is not supported by this browser.');
+	      		return;
+	      	}
+	    }
+    
+    
+		
+	
+		ws.onmessage=function(event){
+			
+			/* 类型???? */
+			eval("var msg="+event.data+";")
+			console.info(msg);
+			if(undefined!=msg.senderID && msg.receiverID==userNum)	{
+				if(msg.type==2){
+					var sendID=msg.senderID;
+					var creatTime=msg.creatTime;
+					var content=msg.content;
+					var type=msg.msgtype;
+					if(friendNum==sendID){
+						appendMsg(creatTime,content,"left");
+						document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
+						
+						//document.getElementById("msgs").scrollTop=document.getElementById("msgs").scrollHeight;
+					}
+					else{
+						addUnread(sendID);
+						//document.getElementById(sendID).getElementsByClassName("new-message-count")[0].className="unread";
+					}
+					changeRencent(sendID,content);
+					
+				}/* else if(msg.type==3){
+					sendNewFreind(msg.content,msg.senderID,msg.receiverID);
+				}
+				else if(msg.type==4){
+					var newFriendId=msg.senderID;
+					var newFriendName=msg.content;
+					var tag="<div class='friend' id="+newFriendId+"  onclick='changeMain("+newFriendId+")'>		<div class='name'>"+newFriendName+"</div> <div class='unread hidden'>0</div></div>";
+					$(".friends").append(tag);
+				} */
+			
+			}	
+		}
+		
+	}
+    
+    
+
+	function creatXmlHttp(){
+    	var xmlhttp;
+        if (window.XMLHttpRequest)
+        {
+            //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {
+            // IE6, IE5 浏览器执行代码
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        return xmlhttp;
+    }
+    
+    function getCookie(name)
+    {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+    
+    function getAllUser(myNum){
+    	var xmlhttp;
+		xmlhttp=creatXmlHttp(xmlhttp);
+		xmlhttp.onreadystatechange=function()
+		{
+			if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			{
+				var userList=eval(xmlhttp.responseText);
+				var ul=document.getElementById("userList");
+				userList.forEach(function (element,index){	
+					if(element.accountnum!="11111111"){
+					var li=document.createElement("li");
+					li.className="list-group-item";
+					li.id=element.accountnum;
+					li.setAttribute("onclick", "changePeron("+element.accountnum+")");
+					
+					var bodyDiv=document.createElement("div");
+					bodyDiv.className="users-list-body";
+					var h5=document.createElement("h5");
+					h5.id=element.accountnum+"_h5";
+					h5.textContent=element.nickname;
+					
+					var p=document.createElement("p");
+					setRecent(element.accountnum,p);
+					var actionDiv=document.createElement("div");
+					actionDiv.className="users-list-action";
+					var unreadDiv=document.createElement("div");	
+					actionDiv.appendChild(unreadDiv);
+					
+					
+					bodyDiv.appendChild(h5);
+					bodyDiv.appendChild(p);
+					bodyDiv.appendChild(actionDiv);
+					li.appendChild(bodyDiv);
+					
+					ul.appendChild(li);
+					
+					if(index==0){
+						friendNum=element.accountnum;
+						document.getElementById("titleName").textContent=" 玩家 "+element.nickname;
+						h5.setAttribute("style", "color: #009c24;");
+						h5.textContent=h5.textContent+" > 聊天中";
+						showWin(element.accountnum);
+					}else{
+						setUnread(element.accountnum,unreadDiv);
+					}
+					}
+				});
+				
+			}
+		}
+		xmlhttp.open("GET","getAllUser?myNum="+myNum,true);
+		xmlhttp.send();
+    }
+    function setUnread(friend,div){
+    	var xmlhttp;
+		xmlhttp=creatXmlHttp(xmlhttp);
+		xmlhttp.onreadystatechange=function()
+		{
+			if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			{
+				if(xmlhttp.responseText.trim()!=0){
+					div.textContent=xmlhttp.responseText.trim();
+					div.className="new-message-count";
+				}
+			}
+		}
+		xmlhttp.open("GET","getUnreadNum?owner="+userNum+"&friend="+friend,true);
+		xmlhttp.send();
+    }
+    
+    //设置回车发送消息，回车的键值为13
+	document.onkeyup = function(e) {
+	  // 兼容FF和IE和Opera
+	  var event = e || window.event;
+	  var key = event.which || event.keyCode || event.charCode;
+	  if (key == 13) {
+	    send();
+	  }
+	}
+    
+    function setRecent(friend,div){
+    	var xmlhttp;
+		xmlhttp=creatXmlHttp(xmlhttp);
+		xmlhttp.onreadystatechange=function()
+		{
+			if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			{
+				
+				div.textContent=xmlhttp.responseText.trim();
+			
+			}
+		}
+		xmlhttp.open("GET","getRecentContent?owner="+userNum+"&friend="+friend,true);
+		xmlhttp.send();
+    }
+    
+    function changePeron(newNum){
+    	if(friendNum!=newNum){
+			var old=document.getElementById(friendNum);
+	    	var oldH5=document.getElementById(friendNum+"_h5");
+	    	oldH5.setAttribute("style", "color: black;");
+	    	oldH5.textContent=oldH5.textContent.split(' >')[0];
+	    	var ne=document.getElementById(newNum);
+	    	cleanUnread(ne);
+	    	
+	    	var neH5=ne.getElementsByTagName("h5")[0];
+	    	neH5.setAttribute("style", "color: #009c24;");
+	    	neH5.textContent=neH5.textContent+" > 聊天中";
+	    	document.getElementById("titleName").textContent=" 玩家  "+neH5.textContent.split(' >')[0];
+	    	friendNum=newNum;
+	    	showWin(friendNum);
+	    	
+	    	
+    	}
+    }
+    
+    function cleanUnread(LiElement){
+    	var targetDiv=LiElement.getElementsByClassName("users-list-action")[0].childNodes[0];
+    	targetDiv.innerHTML="";
+    	targetDiv.className="";
+    	
+    }
+    function changeRencent(num,changeText){
+    	var LiElement=document.getElementById(num);
+    	LiElement.getElementsByTagName("p")[0].innerHTML=changeText;
+    }
+    function addUnread(num){
+    	var LiElement=document.getElementById(num);
+    	var targetDiv=LiElement.getElementsByClassName("users-list-action")[0].childNodes[0];
+    	console.log(targetDiv.textContent);
+    	if(targetDiv.textContent==""){
+    		targetDiv.textContent="1";
+    		targetDiv.className="new-message-count";
+    	}else{
+    		targetDiv.textContent=Number(targetDiv.textContent)+1;
+    	}
+    }
+    function showWin(friendNum){
+    	
+    	var xmlhttp;
+		xmlhttp=creatXmlHttp(xmlhttp);
+		xmlhttp.onreadystatechange=function()
+		{
+			if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			{
+				var messagesList=document.getElementById("messages");
+				messagesList.innerHTML="";
+				var allMsgIndex=eval(xmlhttp.responseText);
+				allMsgIndex.forEach(function (element){
+					var messageItem=document.createElement("div");
+					if(element.receive==0){
+						messageItem.className="message-item outgoing-message";
+					}else{
+						messageItem.className="message-item";
+					}
+					
+					getContent(element.contentid,messageItem);
+					messagesList.appendChild(messageItem);
+					
+				});
+				
+				
+				
+			
+			}
+		}
+		xmlhttp.open("GET","getMsg?owner="+userNum+"&friend="+friendNum,true);
+		xmlhttp.send();
+    }
+    
+   	function parseTime(timestamp){
+            var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+            var Y = date.getFullYear() + '-';
+            var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+            var D = (date.getDate() < 10 ? '0'+date.getDate() : date.getDate()) + ' ';
+            var h = (date.getHours() < 10 ? '0'+date.getHours() : date.getHours()) + ':';
+            var m = (date.getMinutes() < 10 ? '0'+date.getMinutes() : date.getMinutes()) + ':';
+            var s = (date.getSeconds() < 10 ? '0'+date.getSeconds() : date.getSeconds());
+
+            let strDate = Y+M+D+h+m+s;
+            return strDate;
+    }
+    
+    function getContent(contentID,messageItem){
+    var xmlhttp;
+		xmlhttp=creatXmlHttp(xmlhttp);
+		xmlhttp.onreadystatechange=function()
+		{
+			if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			{
+				var result=$.parseJSON(xmlhttp.responseText);
+				
+				var contentDiv=document.createElement("div");
+				contentDiv.className="message-content";
+				contentDiv.textContent=result.message;
+				var actionDiv=document.createElement("div");
+				actionDiv.className="message-action";
+				actionDiv.textContent=parseTime(result.createtime);
+				messageItem.appendChild(actionDiv);
+				messageItem.appendChild(contentDiv);
+				
+				/* var scrollTemp=document.getElementsByClassName("chat-body")[0];
+				scrollTemp.scrollTop=scrollTemp.scrollHeight; */
+				
+				document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
+				
+			}
+		}
+		xmlhttp.open("GET","getContent?contentID="+contentID,true);
+		xmlhttp.send();
+		
+    }
+    
+    
+    function send()
+	{
+		if(friendNum==0 ){
+			alert("没有选择要发送的好友");
+			return;
+		}
+		var message=document.getElementById("inputMessage").value;
+		console.log(message);
+		if(message.trim().length==0)
+		{
+			return ;
+		}
+		document.getElementById("inputMessage").value="";
+		var msgtype="text";//document.getElementById("type").innerHTML;
+		obj = {
+			from:userNum,
+			to:friendNum,   //接受方
+			msg:message,
+			msgtype:msgtype,
+			type:2
+		};
+		var str = JSON.stringify(obj);
+		console.log(str);
+		ws.send(str);
+		appendMsg(Date.parse(new Date()),message,"right");
+		changeRencent(friendNum,message);
+		document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
+		
+	}
+	
+	function appendMsg(time,message,owner){
+		//有点问题，不能实时地加上去，要拖动一下
+		var allMessage=document.getElementById("messages");
+		var outerDiv=document.createElement("div");
+		if(owner=="right"){
+			outerDiv.className="message-item outgoing-message";
+		}else{
+			outerDiv.className="message-item";
+		}
+		var contentDiv=document.createElement("div");
+		contentDiv.className="message-content";
+		contentDiv.textContent=message;
+		var actionDiv=document.createElement("div");
+		actionDiv.className="message-action";
+		actionDiv.textContent=parseTime(time);
+		
+		outerDiv.appendChild(actionDiv);
+		outerDiv.appendChild(contentDiv);
+		allMessage.appendChild(outerDiv);	
+		var scrollTemp=document.getElementsByClassName("chat-body")[0];
+		scrollTemp.scrollTop=scrollTemp.scrollHeight;
+	}
+
+</script>
+    
+</body>
+</html>

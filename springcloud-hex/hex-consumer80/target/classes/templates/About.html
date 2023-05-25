@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Hex-Games 关于我们</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="../static/images/core-img/hex.png">
+
+    <!-- Stylesheet -->
+   	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+        
+	<script src="../static/js/link.js"></script>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+        <!-- Top Header Area -->
+        <div class="top-header-area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12 d-flex align-items-center justify-content-between">
+                        <!-- Logo Area -->
+                        <div class="logo">
+                            <a href="index"><img src="../static/images/core-img/hex.png" style="width:4%"></a>
+                            <a href="index"><img src="../static/images/core-img/hex_text.png" style="width:22%"></a>
+                            <a href="index"><img src="../static/images/core-img/hex_joy1.png" style="width:15%;margin-left:1.8%"></a>
+                        </div>
+
+                        <!-- Search & Login Area -->
+                        <div class="search-login-area d-flex align-items-center">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navbar Area -->
+        <div class="egames-main-menu" id="sticker">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="egamesNav">
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="index">游戏简介</a></li>
+                                    <li><a href="teach">视频教学</a></li>
+                                    <li><a href="#">在线游戏 <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="font-size:xx-small"></span></a>
+                                        <ul class="dropdown">
+                                            <li><a href="hex">人机对战</a></li>
+                                            <li><a href="hex_p2p">好友对战</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="chat">交流论坛</a> </li>
+                                    <li><a href="GameRecord">个人战绩</a></li>
+                                    <li><a href="About">关于我们</a></li>
+                                </ul>
+                            </div>
+                        </div>
+						<div class="login-area">
+                             <a class="lr_button" href="login_register"><span>登录 / 注册</span></a>
+                        </div>
+                        <div class="user1">                               
+							<div class="user">	
+								<!-- <img src="../static/images/core-img/user.png" style="width:7%"> -->
+								<a href="userData" style="vertical-align:middle;font-family:cursive;font-size:18px;font-weight: bolder;display: inline;margin-right: 4%;color: rgb(255, 124, 7);">
+									<img src="../static/images/core-img/user.png" style="width:7%">
+									<span id="user_name"></span>
+								</a>
+								<a onclick="log_out()" href="#" style="vertical-align: inherit;font-family: 'Open Sans';font-weight: 600;font-size: 16px;padding: 0 10px;color: #545454;">
+									<span>退出登录</span>
+								</a>
+							</div>
+                        </div>
+                        
+                        
+                        <script type="text/javascript"> 
+	                        var user = $.cookie("accountnum");//[[${username}]];
+	     					if(user==null)
+	     						$('.user1').css("display","none");
+	     					else{
+	     						$('.login-area').css("display","none");
+	                        	var name = $.cookie("name");
+	                        	$('#user_name').text(name);
+	     					}
+	     					
+						</script>
+					
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcrumb Area Start ##### -->
+    <!-- <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/3.jpg);"> -->
+        <!-- <div class="container h-100"> -->
+            <!-- <div class="row h-100 align-items-center"> -->
+
+                <!-- <div class="col-12"> -->
+                    <!-- <div class="breadcrumb-text"> -->
+                        <!-- <h2>Category</h2> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+            <!-- </div> -->
+        <!-- </div> -->
+    <!-- </section> -->
+    <!-- ##### Breadcrumb Area End ##### -->
+
+
+    <!-- ##### Featured Articles Area Start ##### -->
+    <section class="featured-articles-area section-padding-100-0 bg-img bg-pattern bg-fixed" style="background-image: url(../static/images/bg-img/5.jpg);">
+        <div class="container">
+            <div class="row">
+			
+				 <!-- Article Content -->
+				<div class="col-lg-4 col-md-6" style="margin-right: 10%;margin-bottom: 10%;">
+					<div class="footer-widget">
+						<h4 class="fw-title">开发人员</h4>
+						<div class="top-comment">
+							<div class="tc-item">
+								<div class="tc-thumb set-bg" data-setbg="../static/images/core-img/user.png" style="background-image: url(../static/images/core-img/user2.png);background-size: 100% auto;background-repeat: no-repeat;"></div>
+								<div class="tc-content">
+									<p><a href="#">吕星晨</a>  <br> <span >人机对战AI开发 & 好友对战功能<span></p>
+									<div class="tc-date">June 23, 2000</div>
+								</div>
+							</div>
+							<div class="tc-item">
+								<div class="tc-thumb set-bg" data-setbg="../static/images/authors/2.jpg" style="background-image: url(../static/images/core-img/user7.png);background-size: 100% auto;background-repeat: no-repeat;"></div>
+								<div class="tc-content">
+									<p><a href="#">郑怡扬</a>  <br> <span>基于Websocket实现聊天通讯功能<span></p>
+									<div class="tc-date">July 16, 2001</div>
+								</div>
+							</div>
+							<div class="tc-item">
+								<div class="tc-thumb set-bg" data-setbg="../static/images/authors/3.jpg" style="background-image: url(../static/images/core-img/user3.png);background-size: 100% auto;background-repeat: no-repeat;"></div>
+								<div class="tc-content">
+									<p><a href="#">刘丁馨</a>   <br> <span>前端界面与可视化效果设计<span></p>
+									<div class="tc-date">August 14, 2000</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- <div class="row"> -->
+				<div class="footer-widget-right">
+					<div class="col-lg-4 mb-5 mb-lg-0" style="max-width:100%;margin-left:15px;">
+						<h4 class="comment-title">联系我们</h4>
+						<p>如有任何需要或建议，请通过以下方式联系我们：</p>
+						<div class="row">
+							<div class="col-md-9">
+								<ul class="contact-info-list">
+									<li><div class="cf-left" style="margin-top:3%;">地址</div><div class="cf-right">北京市海淀区中关村南大街27号中央民族大学</div></li>
+									<li><div class="cf-left">Phone</div><div class="cf-right">+86 17810263807</div></li>
+									<li><div class="cf-left">E-mail</div><div class="cf-right">597564398@qq.com</div></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Featured Articles Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area">
+        <!-- Main Footer Area -->
+        <div class="main-footer-area section-padding-100-0" style="padding-top: 2%;">
+            <div class="container">
+                <div class="row">
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3" style="margin: 0 auto;">
+                        <div class="single-footer-widget mb-70">
+                           <div class="widget-title">
+                                <a href="index"><img src="../static/images/core-img/hex.ico" style="width:20%"></a>
+								<a href="index"><img src="../static/images/core-img/hex_text.png" style="width:58%"></a>
+								<a href="index"><img src="../static/images/core-img/hex_joy1.png" style="width:45%;margin-left:22.8%"></a>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copywrite Area -->
+        <div class="copywrite-content">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12 col-sm-5" style="margin-left:33%;">
+                        <!-- Copywrite Text -->
+                       <p class="copywrite-text"><a href="#">
+							Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved   
+							<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备19057144号-1</a>
+						</p>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area End ##### -->
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <!-- <script src="../static/js/jquery/jquery-2.2.4.min.js"></script> -->
+    <!-- Popper js -->
+    <script src="../static/js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="../static/js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="../static/js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="../static/js/active.js"></script>
+    <!-- LogOut js -->
+    <script src="../static/js/logOut.js"></script>
+</body>
+
+</html>

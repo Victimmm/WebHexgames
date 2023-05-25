@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Hex-Games 个人战绩</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="../static/images/core-img/hex.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../static/css/style.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<!-- ECharts单文件引入 -->
+	<script type="text/javascript" src="../static/js/echarts.js"></script>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="../static/js/link.js"></script>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+        <!-- Top Header Area -->
+        <div class="top-header-area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12 d-flex align-items-center justify-content-between">
+                        <!-- Logo Area -->
+                        <div class="logo">
+                            <a href="index"><img src="../static/images/core-img/hex.png" style="width:4%"></a>
+                            <a href="index"><img src="../static/images/core-img/hex_text.png" style="width:22%"></a>
+                            <a href="index"><img src="../static/images/core-img/hex_joy1.png" style="width:15%;margin-left:1.8%"></a>
+                        </div>
+
+                        <!-- Search & Login Area -->
+                        <div class="search-login-area d-flex align-items-center">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navbar Area -->
+        <div class="egames-main-menu" id="sticker">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="egamesNav">
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="index">游戏简介</a></li>
+                                    <li><a href="teach">视频教学</a></li>
+                                    <li><a href="#">在线游戏 <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="font-size:xx-small"></span></a>
+                                        <ul class="dropdown">
+                                            <li><a href="hex">人机对战</a></li>
+                                            <li><a href="hex_p2p">好友对战</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="chat">交流论坛</a> </li>
+                                    <li><a href="GameRecord">个人战绩</a></li>
+                                    <li><a href="About">关于我们</a></li>
+                                </ul>
+                            </div>
+                        </div>
+						<div class="login-area">
+                             <a class="lr_button" href="login_register"><span>登录 / 注册</span></a>
+                        </div>
+                        <div class="user1">                               
+							<div class="user">	
+								<!-- <img src="../static/images/core-img/user.png" style="width:7%"> -->
+								<a href="userData" style="vertical-align:middle;font-family:cursive;font-size:18px;font-weight: bolder;display: inline;margin-right: 4%;color: rgb(255, 124, 7);">
+									<img src="../static/images/core-img/user.png" style="width:7%">
+									<span id="user_name"></span>
+								</a>
+								<a onclick="log_out()" href="#" style="vertical-align: inherit;font-family: 'Open Sans';font-weight: 600;font-size: 16px;padding: 0 10px;color: #545454;">
+									<span>退出登录</span>
+								</a>
+							</div>
+                        </div>
+                        
+                        
+                        <script type="text/javascript"> 
+	                        var user = $.cookie("accountnum");//[[${username}]];
+	     					if(user==null)
+	     						$('.user1').css("display","none");
+	     					else{
+	     						$('.login-area').css("display","none");
+	                        	var name = $.cookie("name");
+	                        	$('#user_name').text(name);
+	     					}
+	     					
+						</script>
+					
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcrumb Area End ##### -->
+
+    <!-- ##### Single Game Review Area Start ##### -->
+	
+    <section class="single-game-review-area section-padding-100" style="padding-top:0;padding-bottom:7%;">
+        <div class="container">
+		<section class="monthly-picks-area section-padding-100 bg-pattern" style="padding-top: 1%;padding-bottom: 0%;border-radius: 2%;">
+        <!-- <div class="container"> -->
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title mb-70 wow fadeInUp" data-wow-delay="100ms" style="font-family:cursive;margin-left:2%;margin-bottom: 1%;color:aquamarine;"><span id="name">Jack</span>，欢迎来到Hex的世界!</h2>
+                </div>
+            </div>
+        <!-- </div> -->
+    </section>
+            
+
+           <div class="row align-items-center" style="background: #ddf5f5;margin-right: 0px;margin-left: 0px;border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;padding-top: 3%;">
+                <!-- *** Review Area *** -->
+                <div class="col-12 col-md-6" style="flex: 0 0 42%;">
+                    <div class="single-game-review-area style-2 mt-70">
+                        <div class="game-content">
+                            <!-- <span class="game-tag">个人信息</span> -->
+                            <!-- <a href="single-game-review" class="game-title">Jack</a> -->
+                            <div class="game-meta">
+                                <a href="#" class="game-date">自<span id="registerDay">2019.6.13</span>至今，我们已相伴<span id="days">205</span>天</a>
+                                <!-- <a href="#" class="game-comments">2 Comments</a> -->
+                            </div>
+							<div>
+								<p><span class="tag_name">对局总数：</span><span class="tag_value" id="winRate">117/130</span></p>
+								<p><span class="tag_name">经验积分：</span><span class="tag_value" id="integral">10</span></p>
+								<p><span class="tag_name">等级称号：</span><span class="tag_value" id="grade">白银棋士</span></p>
+								<!-- <div class="stars" style="display:inline;color:#343a40bd;" >
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                </div> -->
+								<p><span class="tag_name">荣誉勋章：</span><span class="tag_value">"元老玩家"勋章x1;（2021.5.5前注册游戏可获得）</span></p>
+							</div>
+                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris velit arcu, scelerisque dignissim massa quis, mattis facilisis erat. Aliquam erat volutpat. Sed efficitur diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris velit arcu, scelerisque dignissim massa quis, mattis facilisis erat. Aliquam erat volutpat. Sed efficitur diam.</p> -->
+                            <!-- Download & Rating Area -->
+                            <div class="download-rating-area">
+                                <!-- <div class="download-area">
+                                    <a href="#"><img src="../static/images/core-img/honor1.jpg" alt=""></a>
+                                    <a href="#"><img src="../static/images/core-img/honor.jpg" alt=""></a>
+                                    <a href="#"><img src="img/core-img/google-play.png" alt=""></a>
+                                </div> -->
+                                <!-- <div class="rating-area mt-30"> -->
+                                    <!-- <h3>8.2</h3> -->
+                                    <!-- <div class="stars"> -->
+                                        <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+                                        <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+                                        <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+                                        <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+                                        <!-- <i class="fa fa-star-half-o" aria-hidden="true"></i> -->
+                                    <!-- </div> -->
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- *** Barfiller Area *** -->
+                <div class="col-12 col-md-6" style="flex: 0 0 58%;">
+                    <div class="egames-barfiller" style="display: flex;">
+                    <div id="myChart1" style="width:300px;height:200px;margin-bottom:40px;"></div>	
+                    <div id="myChart2" style="width:300px;height:200px;margin-bottom:40px;"></div>
+<!--                         Single Barfiller
+                        <div class="single-barfiller-area">
+                            <div id="bar1" class="barfiller">
+                                <span class="tip"></span>
+                                <span class="fill" data-percentage="100"></span>
+                                <p>胜率</p>
+                            </div>
+                        </div>
+                        Single Barfiller
+                        <div class="single-barfiller-area">
+                            <div id="bar2" class="barfiller">
+                                <span class="tip"></span>
+                                <span class="fill" data-percentage="80"></span>
+                                <p>行棋速度</p>
+                            </div>
+                        </div>
+                        Single Barfiller
+                        <div class="single-barfiller-area">
+                            <div id="bar3" class="barfiller">
+                                <span class="tip"></span>
+                                <span class="fill" data-percentage="95"></span>
+                                <p>攻击力</p>
+                            </div>
+                        </div>
+                        Single Barfiller
+                        <div class="single-barfiller-area">
+                            <div id="bar4" class="barfiller">
+                                <span class="tip"></span>
+                                <span class="fill" data-percentage="60"></span>
+                                <p>防御力</p>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Single Game Review Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area">
+        <!-- Main Footer Area -->
+        <div class="main-footer-area section-padding-100-0" style="padding-top: 2%;">
+            <div class="container">
+                <div class="row">
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3" style="margin: 0 auto;">
+                        <div class="single-footer-widget mb-70">
+                            <div class="widget-title">
+                                <a href="index"><img src="../static/images/core-img/hex.ico" style="width:20%"></a>
+								<a href="index"><img src="../static/images/core-img/hex_text.png" style="width:58%"></a>
+								<a href="index"><img src="../static/images/core-img/hex_joy1.png" style="width:45%;margin-left:22.8%"></a>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copywrite Area -->
+        <div class="copywrite-content">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12 col-sm-5" style="margin-left:33%;">
+                        <!-- Copywrite Text -->
+                        <p class="copywrite-text"><a href="#">
+							Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved   
+							<a href="https://beian.miit.gov.cn/" target="_blank">京ICP备19057144号-1</a>
+						</p>
+                    </div>
+                    <!-- <div class="col-12 col-sm-7"> -->
+                        
+                        <!-- <div class="footer-nav"> -->
+                            <!-- <ul> -->
+                                <!-- <li><a href="index">Home</a></li> -->
+                                <!-- <li><a href="game-review">Games</a></li> -->
+                                <!-- <li><a href="post">Articles</a></li> -->
+                                <!-- <li><a href="single-game-review">Reviews</a></li> -->
+                                <!-- <li><a href="contact">Contact</a></li> -->
+                            <!-- </ul> -->
+                        <!-- </div> -->
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area End ##### -->
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+<!--     <script src="../static/js/jquery/jquery-2.2.4.min.js"></script> -->
+    <!-- Popper js -->
+    <script src="../static/js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="../static/js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="../static/js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="../static/js/active.js"></script>
+    <!-- LogOut js -->
+    <script src="../static/js/logOut.js"></script>
+<!--     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script> -->
+    <script type="text/javascript">
+    	//var accountnum_cookie = getMyCookie("accountnum");
+   		var accountnum_cookie=$.cookie("accountnum");
+   		var win_num;
+   		var total_num;
+    	if (accountnum_cookie==undefined || accountnum_cookie==""){
+    		alert("请先登陆哦ヽ(●-`Д´-)ノ~");
+	        window.location = "/login_register";		
+    	}else{
+    		var name = $.cookie("name");
+            $('#name').text(name);
+    	}
+    	$.ajax({
+			url:"/consumer/getRecord",
+			type:"get",
+			data:{"accountNum":accountnum_cookie},
+			async:false,
+			success:function(result){
+				$("#registerDay").text(result[0]);
+				$("#days").text(result[1]);
+				$("#winRate").text(result[2].split('/')[1]+"局");
+				$("#grade").text(result[3]);
+				$("#integral").text(result[5]);
+				win_num = result[2].split('/')[0];
+				total_num = result[2].split('/')[1];
+				
+				
+				var bar1Fill=$("#bar1").find(".fill:first");
+				var allWidth=$("#bar1").width();
+				bar1Fill.css("width", (allWidth*result[4]*0.01));
+				
+				var bar1Tip=$("#bar1").find(".tip:first");
+				bar1Tip.text(result[4]+"%");
+				bar1Tip.css("left", allWidth*result[4]*0.01-bar1Tip.width());	
+				
+			},
+			error:function(message){
+				//window.alert("error");
+			}
+		});
+    	
+    	function getMyCookie(key){
+			var val = "";
+	
+			// 对cookie操作
+			var cookies = document.cookie;
+			cookies = cookies.replace(/\s/,"");
+			var cookie_array = cookies.split(";");
+			for(i=0;i<cookie_array.length;i++){
+				// yh_mch=lilei
+				var cookie = cookie_array[i];
+				var array = cookie.split("=");
+				if(array[0]==key){
+					val = array[1];
+				}
+			}
+			return val;
+		}
+    
+
+    </script>
+    
+    
+    <!-- Echarts图表  柱状 -->
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('myChart1'));
+		var win = win_num;
+		var fail = total_num-win_num;
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+			        text: '战绩展示',
+			        left: '33%',
+			        top:'88%',
+			        backgroundColor:'#73dfc49e',
+			        borderRadius: 5,
+			        z:0,
+		            textStyle:{
+				        //文字颜色
+				        color:'black',
+				        //字体风格,'normal','italic','oblique'
+				        fontStyle:'normal',
+				        //字体粗细 'normal','bold','bolder','lighter',100 | 200 | 300 | 400...
+				        fontWeight:'bolder',
+				        //字体系列
+				        fontFamily:'fantasy',
+				        //字体大小
+				　　　　 fontSize:15
+			    	}
+			    },
+            tooltip: {
+            	trigger: 'axis',
+		        axisPointer: {
+		            type: 'line'
+		        }
+            },
+            grid:{
+            	top:50,
+            	bottome:0,
+            	left:25,
+            	right:30
+            },
+            textStyle: {
+        		color: '#715656c9',
+        		fontFamily:'sans-serif'
+    		},
+            xAxis: {
+                data: ["胜利局数","失败局数"],
+                padding:15,
+                show:'true'
+            },
+            yAxis: {
+            	splitLine: {
+		            lineStyle: {
+		                type: 'dashed'
+            			}
+	            	}
+            },
+            series: [{
+                type: 'bar',
+                barWidth : 30,
+                data: [win, fail],
+                animationDuration: 1500,
+                label: {
+		            show: true,
+		            position: 'top',
+		            textStyle: {
+		                color: '#555'
+		            }
+		        },
+				itemStyle: {
+                    normal: {
+		                color: (params) => {
+		                    let colors = ['#9bffc3','#ff6124']
+		                    return colors[params.dataIndex]
+		                }
+		            }
+                }
+                
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+    
+    <!-- Echarts图表  饼图 -->
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('myChart2'));
+		var succ_rate = win_num/total_num;
+        // 指定图表的配置项和数据
+        var option = {
+			    title: {
+			        text: '胜率统计',
+			        left: '33%',
+			        top:'88%',
+			        backgroundColor:'#96edc1',
+			        borderRadius: 5,
+			        z:0,
+		            textStyle:{
+				        //文字颜色
+				        color:'black',
+				        //字体风格,'normal','italic','oblique'
+				        fontStyle:'normal',
+				        //字体粗细 'normal','bold','bolder','lighter',100 | 200 | 300 | 400...
+				        fontWeight:'bolder',
+				        //字体系列
+				        fontFamily:'fantasy',
+				        //字体大小
+				　　　　 fontSize:15
+			    	}
+			    },
+			    tooltip: {
+			        trigger: 'item',
+			        formatter: '{a} <br/>{b} : {c} ({d}%)'
+			    },
+		    	legend: {
+			        left: '70%',
+			        top: '40%',
+			        orient:'vertical',
+			        data: ['胜率', '负率'],
+			    },
+				series: {
+						 name:'胜率统计',
+			             type: 'pie',
+				         radius: [10, 40],
+				         center: ['45%', '55%'],
+				         roseType: 'roseType',
+				         smooth: true,
+				         animationDuration: 1500,
+				         label: {
+			                    normal: {
+			                       show : false
+			                    },
+								emphasis:{
+									show:false
+								},
+			                  },
+			             data: [
+			                 {name: '胜率', value: succ_rate},
+			                 {name: '负率', value: 1-succ_rate}
+			             ],
+			             itemStyle: {
+		                    normal: {
+				                color: (params) => {
+				                    let colors = ['#99f320','#ec0238f2']
+				                    return colors[params.dataIndex]
+				                }
+				            }
+		                }
+		         }
+		    };
+		
+		    // 使用刚指定的配置项和数据显示图表。
+		    myChart.setOption(option);	
+    </script>
+    
+</body>
+
+</html>
